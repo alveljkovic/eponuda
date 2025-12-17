@@ -36,7 +36,7 @@ Whole process is done in background by dispatching the jobs.
 
 ## 🛠️ Technical Stack
 
-- **PHP** 8.3
+- **PHP** 8.2
 - **Backend:** Laravel 12 with Sail  
 - **Frontend:** Vue.js 3, Vuetify, TailwindCSS  
 - **SPA Handling:** Inertia.js  
@@ -55,6 +55,17 @@ Follow these steps to set up the project locally:
    cd <project_folder>
    ```
 
+### 1. **Build docker containers**
+   ```bash
+   docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/opt" \
+    -w /opt \
+    laravelsail/php[XX]-composer:latest \
+    composer install --ignore-platform-reqs
+   ```
+   - IMPORTANT: change XX with PHP local version
+
 ### 2. Start Laravel Sail
 - `./vendor/bin/sail up -d`
 
@@ -63,42 +74,47 @@ Follow these steps to set up the project locally:
 ./vendor/bin/sail composer install
 ```
 
-### 4. Install NPM
+### 4. Install NPM packages
 ```bash
 ./vendor/bin/sail npm install
 ```
 
-### 5. Generate App key
+### 5. Install Playwright package
+```bash
+./vendor/bin/sail npx playwright install
+```
+
+### 6. Generate App key
 ```bash
 ./vendor/bin/sail php artisan key:generate
 ```
 
-### 6. Run migrations
+### 7. Run migrations
 ```bash
 ./vendor/bin/sail php artisan migrate
 ```
 
-### 7. Run seeder
+### 8. Run seeder
 ```bash
 ./vendor/bin/sail php artisan db:seed
 ```
 Seeder will seed the DB with:
 - 3 categories
 
-### 8. Build assets
+### 9. Build assets
 ```bash
 ./vendor/bin/sail npm run build
 ```
 
-### 9. Set ENVs
+### 10. Set ENVs
 - Make sure to set `QUEUE_CONNECTION=database`
 
-### 10. Start queue worker
+### 11. Start queue worker
 ```bash
 ./vendor/bin/sail artisan queue:work
 ```
 
-### 11. Run the crawler:
+### 12. Run the crawler:
 - Run init crawler (it will fetch and store all products from page: `https://www.shoptok.si/televizorji/cene/206`)
 ```bash
 ./vendor/bin/sail artisan crawl:products --init
@@ -109,7 +125,7 @@ Seeder will seed the DB with:
 ./vendor/bin/sail artisan crawl:products
 ```
 
-### 12. Have fun
+### 13. Have fun
 
 ---
 
