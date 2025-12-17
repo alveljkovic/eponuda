@@ -36,20 +36,12 @@ Whole process is done in background by dispatching the jobs.
 
 ## 🛠️ Technical Stack
 
-- **PHP 8.3** — Modern, high-performance runtime  
-- **Laravel 12** — Robust application framework with built-in support for queues, jobs, events, and file storage  
-- **Composer v2** — Dependency management with optimized autoloading
-- **Laravel Sail** — Associate users with roles and permissions `spatie/laravel-permission`
-- **Laravel's authentication starter kit** - `laravel/breeze`
-- **Admin LTE** - Easy AdminLTE integration with Laravel `jeroennoten/laravel-adminlte`
-- **Excel/CSV lib** - Supercharged Excel exports and imports in Laravel `maatwebsite/excel`
-
 - **PHP** 8.3
 - **Backend:** Laravel 12 with Sail  
 - **Frontend:** Vue.js 3, Vuetify, TailwindCSS  
 - **SPA Handling:** Inertia.js  
 - **Web Crawler:** Playwright  
-- **Database:** MySQL / MariaDB (via Sail) 
+- **Database:** MySQL (via Sail) 
 
 ---
 
