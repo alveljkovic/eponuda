@@ -1,59 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📁 Web shop crawler — Project Overview
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a **Web Shop Crawler** built with Laravel and Vue.js. 
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 👤 Contact Information
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Detail | Value |
+|--------|--------|
+| **Name** | Aleksandar Veljković |
+| **Email** | aleksandar.veljkovic@gmail.com |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📝 2. Project Overview
+ 
+It is designed to scrape products from an external shop, store them in the local database, and display them on a custom frontend. The application provides structured product information, including images, prices, and categories. Additionally, it offers a responsive and interactive user interface using Vuetify and TailwindCSS, with SPA-like navigation powered by Inertia.js.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+The crawler uses Playwright to automate browser interactions and parse dynamic content. Product data is normalized and stored in the database using Laravel’s Eloquent ORM with chunked upserts to handle large datasets efficiently.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Whole process is done in background by dispatching the jobs.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ⚙️ 3. Features
 
-### Premium Partners
+- **Web Crawler:** Fetchin products from external shops.  
+- **DOM Parser:** Parse product details including name, price, images, and categories.  
+- **Database Storage:** Efficiently store and update products using Laravel upsert.  
+- **Frontend Display:** Display products with paginated lists, categories, and breadcrumbs.  
+- **Responsive Design:** Built with Vuetify and TailwindCSS.  
+- **SPA-like Navigation:** Powered by Vue.js and Inertia.js for smooth client-side transitions.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🛠️ Technical Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **PHP 8.3** — Modern, high-performance runtime  
+- **Laravel 12** — Robust application framework with built-in support for queues, jobs, events, and file storage  
+- **Composer v2** — Dependency management with optimized autoloading
+- **Laravel Sail** — Associate users with roles and permissions `spatie/laravel-permission`
+- **Laravel's authentication starter kit** - `laravel/breeze`
+- **Admin LTE** - Easy AdminLTE integration with Laravel `jeroennoten/laravel-adminlte`
+- **Excel/CSV lib** - Supercharged Excel exports and imports in Laravel `maatwebsite/excel`
 
-## Code of Conduct
+- **PHP** 8.3
+- **Backend:** Laravel 12 with Sail  
+- **Frontend:** Vue.js 3, Vuetify, TailwindCSS  
+- **SPA Handling:** Inertia.js  
+- **Web Crawler:** Playwright  
+- **Database:** MySQL / MariaDB (via Sail) 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 📦 Installation & Setup
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Follow these steps to set up the project locally:
 
-## License
+### 1. **Clone the repository:**
+   ```bash
+   git clone <repository_url>
+   cd <project_folder>
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 2. Start Laravel Sail
+- `./vendor/bin/sail up -d`
+
+### 3. Install dependencies
+```bash
+./vendor/bin/sail composer install
+```
+
+### 4. Install NPM
+```bash
+./vendor/bin/sail npm install
+```
+
+### 5. Generate App key
+```bash
+./vendor/bin/sail php artisan key:generate
+```
+
+### 6. Run migrations
+```bash
+./vendor/bin/sail php artisan migrate
+```
+
+### 7. Run seeder
+```bash
+./vendor/bin/sail php artisan db:seed
+```
+Seeder will seed the DB with:
+- 3 categories
+
+### 8. Build assets
+```bash
+./vendor/bin/sail npm run build
+```
+
+### 9. Set ENVs
+- Make sure to set `QUEUE_CONNECTION=database`
+
+### 10. Start queue worker
+```bash
+./vendor/bin/sail artisan queue:work
+```
+
+### 11. Run the crawler:
+- Run init crawler (it will fetch and store all products from page: `https://www.shoptok.si/televizorji/cene/206`)
+```bash
+./vendor/bin/sail artisan crawl:products --init
+```
+
+- Run full crawler (it will fetch and store all products form pages: `https://www.shoptok.si/tv-sprejemniki/cene/56`)
+```bash
+./vendor/bin/sail artisan crawl:products
+```
+
+### 12. Have fun
+
+---
+
+## 🧪 Tests 
+
+Currently, there are no tests implemented. Tests should be added at a later stage.
