@@ -1,0 +1,13 @@
+{
+    "product": {
+        "view": "Ogled izdelka",
+        "price": "Cena"
+    },
+    "price": {
+        "currency": "€"
+    },
+    "pagination": {
+        "previous": "Prejšnja",
+        "next": "Naslednja"
+    }
+}
